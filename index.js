@@ -3,10 +3,11 @@ function receivesAFunction(spy) {
 }
 receivesAFunction(function() {return "i did"} );
 
-let returnsANamedFunction = () => () => console.log("inner");
-let inside = returnsANamedFunction();
-inside();
-
+function returnsANamedFunction() {
+    return function namedFun() {
+      console.log(`a name in function`);
+    };
+  }
 let returnsAnAnonymousFunction = () => () => console.log("Inner function");
 let innerFunction = returnsAnAnonymousFunctio();
 innerFunction();
